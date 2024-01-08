@@ -16,7 +16,7 @@ async function start() {
 }
 
 function runSolution() {
-	return require(`./solutions/${solutionId}/solution.js`);
+	return require(`./solutions/${solutionId}/solution.ts`);
 }
 
 async function copyTemplate() {
