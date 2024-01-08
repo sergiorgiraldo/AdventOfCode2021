@@ -1,7 +1,11 @@
+import { expect, test } from "@jest/globals";
 const lib = require("../solutions/lib/day1");
+const helpers = require("../solutions/lib/helpers.ts");
 
 test("SolveFirstStar", () => {
-	let lines = [];
+	helpers.which.env = "test";
+
+	let lines: string[] = [];
 	lines.push("199");
 	lines.push("200");
 	lines.push("208");
@@ -16,7 +20,9 @@ test("SolveFirstStar", () => {
 });
 
 test("SolveSecondStar", () => {
-	let lines = [];
+	helpers.which.env = "test";
+
+	let lines: string[] = [];
 	lines.push("199");
 	lines.push("200");
 	lines.push("208");
