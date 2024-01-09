@@ -1,6 +1,6 @@
 import { expect, test } from "@jest/globals";
 const sum = require("../misc/sum");
 
-test("adds 1 + 2 to equal 3", () => {
+test("SANITY CHECK", () => {
 	expect(sum(1, 2)).toBe(3);
 });

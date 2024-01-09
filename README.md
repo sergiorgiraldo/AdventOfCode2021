@@ -16,17 +16,25 @@ https://sergiorgiraldo.github.io/AdventOfCode2021/solutions/
 
 ## Usage
 
- - To run a solution by day, use: `npm start day2`
+ - To start a solution by day, use: `npm start day2`
 
     - If it is a new day, it will generate the folder for the day based on the template, also download the input using AOCD (https://github.com/wimglenn/advent-of-code-data)
 
-- To run test by day, use: `npm test day2`
+ - To run a solution by day, use: `npm run type [day]`
+
+  - `npm run type 15`   
+
+- To run test by day, use: `npm test day15`
 
 - To submit answers, use: `npm run submit [1..25] [1|2]`
 
   - `npm run submit 15 1`, part 1 of day 15
 
   - `npm run submit 15 2`, part 2 of day 15
+
+- To deploy, use: `./deploy.sh [message]` 
+
+  - `./deploy.sh "day 15 completed"`
 
 ## Setup
 
