@@ -1,7 +1,7 @@
 {
 	"name": "advent-of-code-2021",
 	"logName": "Advent of Code 2021",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Advent of Code 2021 using Node JS for Current Year.",
 	"main": "run.js",
 	"scripts": {
