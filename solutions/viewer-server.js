@@ -6,7 +6,7 @@ const report = (...messages) =>
 		`[${require(fromHere("../package.json")).logName} / ${__filename
 			.split(path.sep)
 			.pop()
-			.split(".js")
+			.split(".ts")
 			.shift()}]`,
 		...messages
 	);
@@ -59,43 +59,8 @@ ${links.join("\n")}
 		<h2>Libs</h2>
 		<ul>
 			<li>
-				<a class="days" href="https://sergiorgiraldo.github.io/AdventOfCode${currentYear}/solutions/lib/helpers.js">
+				<a class="days" href="https://sergiorgiraldo.github.io/AdventOfCode${currentYear}/solutions/lib/helpers.ts">
 					Helpers
-				</a>
-			</li>
-			<li>
-				<a class="days" href="https://sergiorgiraldo.github.io/AdventOfCode${currentYear}/solutions/lib/helpers/arrays.js">
-					Arrays
-				</a>
-			</li>
-			<li>
-				<a class="days" href="https://sergiorgiraldo.github.io/AdventOfCode${currentYear}/solutions/lib/helpers/dates.js">
-					Dates
-				</a>
-			</li>
-			<li>
-				<a class="days" href="https://sergiorgiraldo.github.io/AdventOfCode${currentYear}/solutions/lib/helpers/math.js">
-					Math
-				</a>
-			</li>
-			<li>
-				<a class="days" href="https://sergiorgiraldo.github.io/AdventOfCode${currentYear}/solutions/lib/helpers/objects.js">
-					Objects
-				</a>
-			</li>
-			<li>
-				<a class="days" href="https://sergiorgiraldo.github.io/AdventOfCode${currentYear}/solutions/lib/helpers/processes.js">
-					Processes
-				</a>
-			</li>
-			<li>
-				<a class="days" href="https://sergiorgiraldo.github.io/AdventOfCode${currentYear}/solutions/lib/helpers/strings.js">
-					Strings
-				</a>
-			</li>
-			<li>
-				<a class="days" href="https://sergiorgiraldo.github.io/AdventOfCode${currentYear}/solutions/lib/helpers/structures.js">
-					Structures
 				</a>
 			</li>
 		</ul>		
