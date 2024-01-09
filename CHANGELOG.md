@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.0.0](https://github.com/sergiorgiraldo/AdventOfCode2021/compare/v3.0.0...v4.0.0) (2024-01-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* day 5 completed
+* day 5 completed
+
+### Features
+
+* day 5 completed ([28fc5f7](https://github.com/sergiorgiraldo/AdventOfCode2021/commit/28fc5f7d4739720dca84cb245e8e35053a3acde3))
+* day 5 completed ([c991cd1](https://github.com/sergiorgiraldo/AdventOfCode2021/commit/c991cd180feb0d5ae234a69a723bbc002b96ea89))
+
 ## [3.0.0](https://github.com/sergiorgiraldo/AdventOfCode2021/compare/v2.0.0...v3.0.0) (2024-01-09)
 
 
