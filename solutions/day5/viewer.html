@@ -63,12 +63,12 @@
     <pre><code>{{ answerText }}</code></pre>
 
     <h3>
-      <a class="files" href="../lib/day4.ts">lib</a>
+      <a class="files" href="../lib/day5.ts">lib</a>
     </h3>
     <pre><code>{{ libText }}</code></pre>
     
     <h3>
-      <a class="files" href="../../__tests__/day4.ts">unit tests</a>
+      <a class="files" href="../../__tests__/day5.ts">unit tests</a>
     </h3>
     <pre><code>{{ unitTestText }}</code></pre>
 
@@ -108,12 +108,12 @@
           .then((response) => {
             this.solutionText = response;
           });
-        fetch("../lib/day4.ts")
+        fetch("../lib/day5.ts")
           .then(response => response.text())
           .then((response) => {
             this.libText = response;
           });
-        fetch("../../__tests__/day4.ts")
+        fetch("../../__tests__/day5.ts")
           .then(response => response.text())
           .then((response) => {
             this.unitTestText = response;

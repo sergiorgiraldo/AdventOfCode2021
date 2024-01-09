@@ -2,11 +2,12 @@
 	"name": "advent-of-code-2021",
 	"logName": "Advent of Code 2021",
 	"version": "3.0.0",
-	"description": "Advent of Code 2021 using Node JS for Current Year.",
+	"description": "Advent of Code 2021 using Node and TypeScript for Current Year.",
 	"main": "run.js",
 	"scripts": {
 		"start": "node run.js",
 		"type": "./type.sh",
+		"deploy": "./deploy.sh",
 		"submit": "node send.js",
 		"webserver": "node solutions/viewer-server.js",
 		"test": "jest --verbose --detectOpenHandles --forceExit"
