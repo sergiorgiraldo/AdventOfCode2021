@@ -87,7 +87,7 @@ async function copyTemplate() {
 		testPath,
 `
 import { expect, test } from "@jest/globals";
-import ${toTitleCase(newFolderName)} from '../solutions/lib/${newFolderName}';
+import ${toTitleCase(newFolderName)} from "../solutions/lib/${newFolderName}";
 
 const helpers = require("../solutions/lib/helpers.ts");
 
