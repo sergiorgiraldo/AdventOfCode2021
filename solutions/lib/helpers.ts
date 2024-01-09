@@ -29,7 +29,7 @@ function dbg(): void {
 	if (which.env !== "test") return;
 
 	if (_getNumberOfDebugs() == 0) {
-		const caller = _getCallerFile();//.split("/").slice(-1).join("");
+		const caller:string = _getCallerFile();
 		fs.writeFileSync(
 			debugFile,
 			new Date().toLocaleString() + " --- " + caller + "\n"
@@ -41,35 +41,12 @@ function dbg(): void {
 }
 
 function _getCallerFile(): string {
-	return arguments.callee.caller?.name;;
-	// var originalFunc = Error.prepareStackTrace;
-
-	// var callerfile;
-	// try {
-	// 	var err = new Error();
-	// 	var currentfile;
-
-	// 	Error.prepareStackTrace = function (err, stack) {
-	// 		return stack;
-	// 	};
-
-	// 	currentfile = err.stack.shift().getFileName();
-
-	// 	while (err.stack?.length) {
-	// 		callerfile = err.stack.shift().getFileName();
-
-	// 		if (currentfile !== callerfile) break;
-	// 	}
-	// } catch (e) {}
-
-	// Error.prepareStackTrace = originalFunc;
-
-	// return callerfile;
+	return arguments.callee.caller?.name;
 }
 
-function _getNumberOfDebugs() {
-	var data = fs.readFileSync(debugFile);
-	var res = data.toString().split("\n").length;
+function _getNumberOfDebugs(): number {
+	var data:Buffer = fs.readFileSync(debugFile);
+	var res:number = data.toString().split("\n").length;
 	return res - 1;
 }
 

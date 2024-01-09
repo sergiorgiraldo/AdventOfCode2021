@@ -50,7 +50,7 @@ class Day3 {
 				criteria = count0 > count1 ? 1 : 0;
 			}
 
-			lines = lines.filter((x) => x[i] === criteria.toString());
+			lines = lines.filter((val) => val[i] === criteria.toString());
 		}
 
 		return parseInt(lines[0], 2);

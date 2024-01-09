@@ -10,10 +10,11 @@ class Day2 {
 			up: (value: number) => (depth -= value)
 		};
 
-		for (const line of lines) {
+		lines.map((line) => {
 			const [command, value] = line.split(" ");
 			commands[command](parseInt(value));
-		}
+		});
+
 		return horizontal * depth;
 	}
 
@@ -30,10 +31,11 @@ class Day2 {
 			up: (value: number) => (aim -= value)
 		};
 
-		for (const line of lines) {
+		lines.map((line) => {
 			const [command, value] = line.split(" ");
 			commands[command](parseInt(value));
-		}
+		});
+
 		return horizontal * depth;
 	}
 }
