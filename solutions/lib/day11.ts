@@ -38,7 +38,7 @@ class Day11 {
 	}
 
 	private executeStep(grid: number[][]): [number[][], number] {
-		let alreadyFlashed: string[] = [];
+		let visited = new Set<string>();
 	  
 		// Each cell of the grid increases by 1
 		grid = grid.map((row) => row.map((cell) => cell + 1));
@@ -47,11 +47,8 @@ class Day11 {
 		  // For each cell whose value is 9 or more, also increase by 1 all the adjacent cells
 		  for (let y = 0; y < grid.length; y++) {
 			for (let x = 0; x < grid[y].length; x++) {
-			  if (
-				grid[y][x] > this.READY_TO_FLASH &&
-				!alreadyFlashed.includes(`${x},${y}`)
-			  ) {
-				alreadyFlashed.push(`${x},${y}`);
+			  if (grid[y][x] > this.READY_TO_FLASH && !visited.has(`${x},${y}`)) {
+				visited.add(`${x},${y}`);
 	  
 				// Increase all the adjacent cells
 				for (let yy = y - 1; yy <= y + 1; yy++) {
@@ -73,7 +70,7 @@ class Day11 {
 		  grid.some((row, y) =>
 			row.some(
 			  (cell, x) =>
-				cell > this.READY_TO_FLASH && !alreadyFlashed.includes(`${x},${y}`),
+				cell > this.READY_TO_FLASH && !visited.has(`${x},${y}`),
 			),
 		  )
 		);
@@ -81,9 +78,9 @@ class Day11 {
 		// Set to 0 all the cells that have flashed
 		return [
 		  grid.map((row, y) =>
-			row.map((cell, x) => (alreadyFlashed.includes(`${x},${y}`) ? 0 : cell)),
+			row.map((cell, x) => (visited.has(`${x},${y}`) ? 0 : cell)),
 		  ),
-		  alreadyFlashed.length,
+		  visited.size,
 		];
 	  }
 }
