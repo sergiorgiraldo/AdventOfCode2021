@@ -11,7 +11,7 @@ class Day9 {
 		input.map((_, y)=>{
 			_.map((point, x)=>{
 				const neighbours = this.getNeighbours(x, y, input);
-				const isLowpoint = neighbours.every((p) => p === null || p > point);
+				const isLowpoint = neighbours.every((neighbour) => neighbour === null || neighbour > point);
 
 				if (isLowpoint) {
 					lowPoints += point + 1;
