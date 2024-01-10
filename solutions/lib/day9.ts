@@ -6,20 +6,16 @@ class Day9 {
 	public solveForFirstStar(lines: string[]) {
 		const input:number[][] = this.parse(lines);
 
-		let lowPoints = 0;
+		const lowPoints = this.getLowPoints(input);
 
-		input.map((_, y)=>{
-			_.map((point, x)=>{
-				const neighbours = this.getNeighbours(x, y, input);
-				const isLowpoint = neighbours.every((neighbour) => neighbour === null || neighbour > point);
+		let total: number;
 
-				if (isLowpoint) {
-					lowPoints += point + 1;
-				}
-			})
-		});
+		total = lowPoints.reduce((acc, point) => {
+			const [, , height] = point.split(",").map(Number);
+			return acc + height;
+		  }, 0);
 
-		return lowPoints;
+		return total;
 	}
 
 	public solveForSecondStar(lines: string[]) {
@@ -28,27 +24,45 @@ class Day9 {
 		let visited = new Set<string>();
 		let basins: Set<string>[] = [];
 
-		input.map((_, y)=>{
-			_.map((point, x)=>{
-				if (!visited.has(`${x},${y}`) && point !== this.BASIN_RIDGE) {
-					const newVisitedLocations = this.mapBasin(x, y, input);
+		const lowPoints = this.getLowPoints(input);
+
+		lowPoints.forEach((point) => {
+			const [x, y, height] = point.split(",").map(Number);
+
+			if (!visited.has(`${x},${y}`) && height !== this.BASIN_RIDGE) {
+				const newVisitedLocations = this.mapBasin(x, y, input);
 					
-					basins.push(newVisitedLocations);
+				basins.push(newVisitedLocations);
 					
-					visited = new Set([...visited, ...newVisitedLocations]);			
-				}
-			})
+				visited = new Set([...visited, ...newVisitedLocations]);			
+			}
 		});
 
-		const [biggestBasin1, biggestBasin2, biggestBasin3] = basins.sort(
-			(a, b) => b.size - a.size
-		);
+		const [biggestBasin1, biggestBasin2, biggestBasin3] = basins.sort((a, b) => b.size - a.size);
 
 		return biggestBasin1.size * biggestBasin2.size * biggestBasin3.size;
 	}
 
 	private parse(lines: string[]): number[][] {
 		return lines.map((l) => l.split("").map(Number));
+	}
+
+	private getLowPoints(input: number[][]): string[] {
+		let lowPoints: string[] = [];
+
+		input.map((_, y)=>{
+			_.map((height, x)=>{
+				const neighbours = this.getNeighbours(x, y, input);
+				
+				const isLowpoint = neighbours.every((neighbour) => neighbour === null || neighbour > height);
+
+				if (isLowpoint) {
+					lowPoints.push(`${x},${y},${height + 1}`);
+				}
+			})
+		});
+
+		return lowPoints;
 	}
 
 	private getNeighbours(
