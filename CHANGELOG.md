@@ -1,5 +1,14 @@
 # Changelog
 
+## [7.1.0](https://github.com/sergiorgiraldo/AdventOfCode2021/compare/v7.0.0...v7.1.0) (2024-01-11)
+
+
+### Features
+
+* day 10 completed ([2d87905](https://github.com/sergiorgiraldo/AdventOfCode2021/commit/2d87905c51a1ba927dbaacb41de301c55021b0a3))
+* day 11 and 12 completed ([3976bee](https://github.com/sergiorgiraldo/AdventOfCode2021/commit/3976beefa36a0910500ff78e7ca05ac39e8a4150))
+* day 11 completed ([e1adbed](https://github.com/sergiorgiraldo/AdventOfCode2021/commit/e1adbed3bc67b8c03ee41a84d7f0ae03c4c8c50a))
+
 ## [7.0.0](https://github.com/sergiorgiraldo/AdventOfCode2021/compare/v6.0.0...v7.0.0) (2024-01-09)
 
 
