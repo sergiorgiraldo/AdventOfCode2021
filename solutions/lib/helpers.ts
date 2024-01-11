@@ -29,19 +29,15 @@ function dbg(): void {
 	if (which.env !== "test") return;
 
 	if (_getNumberOfDebugs() == 0) {
-		const caller:string = _getCallerFile();
+		//const caller:string = dbg.caller.name;
 		fs.writeFileSync(
 			debugFile,
-			new Date().toLocaleString() + " --- " + caller + "\n"
+			new Date().toLocaleString() /*+ " --- " + caller*/ + "\n"
 		);
 	}
 
 	fs.writeFileSync(debugFile, Array.from(arguments).join(" ") + "\n", {flag: "a"});
 	console.log(Array.from(arguments).join(" "));
-}
-
-function _getCallerFile(): string {
-	return arguments.callee.caller?.name;
 }
 
 function _getNumberOfDebugs(): number {
