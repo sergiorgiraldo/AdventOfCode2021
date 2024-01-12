@@ -29,14 +29,13 @@ function dbg(): void {
 	if (which.env !== "test") return;
 
 	if (_getNumberOfDebugs() == 0) {
-		//const caller:string = dbg.caller.name;
 		fs.writeFileSync(
 			debugFile,
-			new Date().toLocaleString() /*+ " --- " + caller*/ + "\n"
+			new Date().toLocaleString() + "\n"
 		);
 	}
-
-	fs.writeFileSync(debugFile, Array.from(arguments).join(" ") + "\n", {flag: "a"});
+	const caller:string = new Error().stack?.split("\n")[3].trim() ?? "";
+	fs.writeFileSync(debugFile, caller + "\n" + Array.from(arguments).join(" ") + "\n", {flag: "a"});
 	console.log(Array.from(arguments).join(" "));
 }
 

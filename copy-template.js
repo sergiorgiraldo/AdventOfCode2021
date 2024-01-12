@@ -42,6 +42,27 @@ async function fetchAOCDInput(currentYear, currentDay) {
 	return "PASTE YOUR INPUT HERE";
 }
 
+async function fetchAOCDInputTest(currentYear, currentDay) {
+	report(
+		"Using AOCD to attempt to download your puzzle input, see: https://github.com/wimglenn/advent-of-code-data"
+	);
+	try {
+		const { stdout, stderr } = await run_c(
+			`aocd ${currentDay} ${currentYear} --example`
+		);
+		if (stderr) {
+			report(`Could not fetch input for ${currentYear} / ${currentDay}`);
+		}
+		if (stdout) {
+			report(`Downloaded using AOCD.`);
+		}
+		return stdout;
+	} catch (ex) {
+		report(`Could not fetch input for ${currentYear} / ${currentDay}`);
+	}
+	return "PASTE YOUR INPUT HERE";
+}
+
 async function copyTemplate() {
 	const newFolderName = process.argv[2];
 	const templateFolderPath = "template";
@@ -79,36 +100,6 @@ async function copyTemplate() {
 			report("Creating:", newFilePath);
 			return write_c(fromHere_c(newFilePath), contents);
 		})
-	);
-
-	const testPath = fromHere_c(`__tests__/${newFolderName}.ts`);
-	report("Creating:", testPath);
-	write_c(
-		testPath,
-`
-import { expect, test } from "@jest/globals";
-import ${toTitleCase(newFolderName)} from "../solutions/lib/${newFolderName}";
-
-const helpers = require("../solutions/lib/helpers.ts");
-
-test("SolveFirstStar", () => {
-	helpers.which.env = "test";
-	const lib = new ${toTitleCase(newFolderName)}();
-
-	let lines:string[] = [];
-
-	expect(lib.solveForFirstStar(lines)).toBe(-1);
-});
-
-test("SolveSecondStar", () => {
-	helpers.which.env = "test";
-	const lib = new ${toTitleCase(newFolderName)}();
-
-	let lines:string[] = [];
-	
-	expect(lib.solveForSecondStar(lines)).toBe(-2);
-});
-`
 	);
 
 	const answerPath = fromHere_c(`solutions/${newFolderName}/answer.txt`);
@@ -198,6 +189,65 @@ export default ${toTitleCase(newFolderName)};
 			aocInputText,
 			"utf8"
 		);
+
+		const aocInputTestText = await fetchAOCDInputTest(currentYear, currentDay);
+		const lines = aocInputTestText.split("\n");
+		let firstBlock = false, secondBlock = false;
+		let firstBlockLines = "", secondBlockAnswer = "";
+		for (const line of lines) {
+			if (line.startsWith("-------------------------------")) {
+				if (!firstBlock) {
+					firstBlock = true;
+				} else if (!secondBlock) {
+					firstBlock = false;
+					secondBlock = true;
+				}
+				continue;
+			}
+			else{
+				if (firstBlock){
+					firstBlockLines += "lines.push(\"" + line + "\");" + "\n";
+				}
+				else if (secondBlock){
+					secondBlockAnswer = line.split(": ")[1];
+					break;
+				}
+			}
+		}
+
+		const testPath = fromHere_c(`__tests__/${newFolderName}.ts`);
+		report("Creating:", testPath);
+		write_c(
+			testPath,
+	`
+	import { expect, test } from "@jest/globals";
+	import ${toTitleCase(newFolderName)} from "../solutions/lib/${newFolderName}";
+	
+	const helpers = require("../solutions/lib/helpers.ts");
+	
+	test("SolveFirstStar", () => {
+		helpers.which.env = "test";
+		helpers.clearDebug();
+		
+		const lib = new ${toTitleCase(newFolderName)}();
+	
+		let lines:string[] = [];
+		${firstBlockLines}
+		expect(lib.solveForFirstStar(lines)).toBe(${secondBlockAnswer});
+	});
+	
+	test("SolveSecondStar", () => {
+		helpers.which.env = "test";
+		const lib = new ${toTitleCase(newFolderName)}();
+	
+		let lines:string[] = [];
+		${firstBlockLines}
+		expect(lib.solveForSecondStar(lines)).toBe(-2);
+	});
+	`
+		);
+
+
 	} else {
 		report(`Invalid year (${currentYear}) / day (${currentDay})`);
 	}
