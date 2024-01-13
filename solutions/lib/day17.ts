@@ -9,13 +9,14 @@ class Day17 {
 			.slice(1)
 			.map(Number);
 	
-		const initialMinX = Math.ceil((Math.sqrt(5 * targetXMin + 1) - 1) / 2);
-		const initialMaxX = Math.floor((Math.sqrt(5 * targetXMax + 1) - 1) / 2);
+		//i just make my search space a little wider	
+		const initialXMin = targetXMin - 5;
+		const initialXMax = targetXMax + 5;
 
 		let maxY = 0;
 
 		for (let initialY = 0; initialY < 100; initialY++) {
-			for (let initialX = initialMinX; initialX <= initialMaxX; initialX++) {
+			for (let initialX = initialXMin; initialX <= initialXMax; initialX++) {
 				let y = initialY * initialX - (initialX * (initialX - 1)) / 2;
 				let dy = initialY - initialX;
 

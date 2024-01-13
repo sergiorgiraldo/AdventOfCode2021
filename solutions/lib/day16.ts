@@ -34,14 +34,13 @@ class Day16 {
 	}
 
 	private hexToBin(hex: string) {
-		const hexChars = [...hex];
-		const binString = [];
+		const hexChars:string[] = [...hex];
+		const binString:string[] = [];
 
-		for (let hexChar of hexChars) {
-			binString.push(
-				("0000" + parseInt(hexChar, 16).toString(2)).slice(-4)
+		hexChars.map((char) => {
+			binString.push(("0000" + parseInt(char, 16).toString(2)).slice(-4)
 			);
-		}
+		});
 
 		return binString.join("");
 	}
@@ -61,7 +60,8 @@ class Day16 {
 		const version:number = parseInt(packet.splice(0, 3).join(""), 2);
 		const typeId:number = parseInt(packet.splice(0, 3).join(""), 2);
 		const numParts = [];
-		let num = null;
+
+		let num:number|null = null;
 		let leaves: Node[] = [];
 
 		switch (typeId) {
@@ -123,6 +123,7 @@ class Day16 {
 		};
 
 		let done = false;
+
 		do {
 			const leaf = this.getLeafNode(packet);
 			if (!packet.includes("1")) done = true;
@@ -134,32 +135,32 @@ class Day16 {
 	}
 
 	private processTree(treeNode:Node): number {
-		const args = [];
+		const args: number[] = [];
 
 		for (let node of treeNode.leaves) {
 			args.push(node?.data?.number ?? this.processTree(node));
 		}
 
 		switch (treeNode.typeId) {
-			case this.TYPE_ID_OP_SUM: {
+			case this.TYPE_ID_OP_SUM: { //sum packets
 				return args.reduce((sum, val) => sum + val, 0);
 			}
-			case this.TYPE_ID_OP_PRODUCT: {
+			case this.TYPE_ID_OP_PRODUCT: { //multiply packets
 				return args.reduce((sum, val) => sum * val, 1);
 			}
-			case this.TYPE_ID_OP_MINIMUM: {
+			case this.TYPE_ID_OP_MINIMUM: { //get packet with lower value
 				return args.reduce((min, val) => Math.min(min, val),Number.MAX_VALUE);
 			}
-			case this.TYPE_ID_OP_MAXIMUM: {
+			case this.TYPE_ID_OP_MAXIMUM: { //get packet with higher value
 				return args.reduce((max, val) => Math.max(max, val),Number.MIN_VALUE);
 			}
-			case this.TYPE_ID_OP_GT: {
+			case this.TYPE_ID_OP_GT: { //greater than
 				return args[0] > args[1] ? 1 : 0;
 			}
-			case this.TYPE_ID_OP_LT: {
+			case this.TYPE_ID_OP_LT: { //less than
 				return args[0] < args[1] ? 1 : 0;
 			}
-			case this.TYPE_ID_OP_EQ: {
+			case this.TYPE_ID_OP_EQ: { //equal to
 				return args[0] === args[1] ? 1 : 0;
 			}
 			case null: {
