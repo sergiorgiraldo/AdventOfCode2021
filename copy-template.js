@@ -44,23 +44,23 @@ async function fetchAOCDInput(currentYear, currentDay) {
 
 async function fetchAOCDInputTest(currentYear, currentDay) {
 	report(
-		"Using AOCD to attempt to download your puzzle input, see: https://github.com/wimglenn/advent-of-code-data"
+		"Using AOCD to attempt to download your puzzle test cases, see: https://github.com/wimglenn/advent-of-code-data"
 	);
 	try {
 		const { stdout, stderr } = await run_c(
 			`aocd ${currentDay} ${currentYear} --example`
 		);
 		if (stderr) {
-			report(`Could not fetch input for ${currentYear} / ${currentDay}`);
+			report(`Could not fetch tests for ${currentYear} / ${currentDay}`);
 		}
 		if (stdout) {
 			report(`Downloaded using AOCD.`);
 		}
 		return stdout;
 	} catch (ex) {
-		report(`Could not fetch input for ${currentYear} / ${currentDay}`);
+		report(`Could not fetch tests for ${currentYear} / ${currentDay}`);
 	}
-	return "PASTE YOUR INPUT HERE";
+	return "PASTE YOUR TESTS HERE";
 }
 
 async function copyTemplate() {
