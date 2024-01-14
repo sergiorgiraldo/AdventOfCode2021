@@ -58,21 +58,21 @@ class Day15 {
 		const queue: [number, number][] = [[0, 0]];
 
 		while (queue.length > 0) {
-			[...queue.entries()].forEach(([index, item]) => {
-				this.helpers.dbg(
-					`queue index: ${index}`,
-					` queue item: `,
-					` ${item.join(",")}`,
-					`item  weight: `,
-					` ${nodes.get(item.join(","))!.weight}`
-				);
-			});
+			// [...queue.entries()].forEach(([index, item]) => {
+			// 	this.helpers.dbg(
+			// 		`queue index: ${index}`,
+			// 		` queue item: `,
+			// 		` ${item.join(",")}`,
+			// 		`item  weight: `,
+			// 		` ${nodes.get(item.join(","))!.weight}`
+			// 	);
+			// });
 			const [currentIndex, current] = this.findMin(queue, nodes);
 			queue.splice(currentIndex, 1);
 			if (current.join(",") === goal.join(",")) {
 				break;
 			}
-			this.helpers.dbg(`queue after: ${current.join(",")}`);
+			// this.helpers.dbg(`queue after: ${current.join(",")}`);
 
 			const currentNode = nodes.get(current.join(","));
 
