@@ -1,5 +1,5 @@
 interface Node {
-	cost: number;
+	weight: number;
 	previous?: [number, number];
 }
 
@@ -22,9 +22,9 @@ class Day15 {
 		];
 
 		const nodes = this.aStar(goal, riskLevelsMap);
-		const cost = nodes.get(goal.join(","))?.cost;
+		const weight = nodes.get(goal.join(","))?.weight;
 
-		return cost ?? 0;
+		return weight ?? 0;
 	}
 
 	public solveForSecondStar(lines: string[]) {
@@ -39,40 +39,40 @@ class Day15 {
 		];
 
 		const nodes = this.aStar(goal, largerMap);
-		const cost = nodes.get(goal.join(","))?.cost;
+		const weight = nodes.get(goal.join(","))?.weight;
 
-		return cost ?? 0;
+		return weight ?? 0;
 	}
 
 	/*
 		https://en.wikipedia.org/wiki/A*_search_algorithm
 		1. start at (0,0) (start position), add to queue
-		2. see from the items in the queue which one has the lowest cost (min->current)
+		2. see from the items in the queue which one has the lowest weight (min->current)
 		3. if it is the goal, break the loop
 		4. if it is not the goal, remove current from the queue and find the points that we can move to. Add to queue.
 		5. repeat from step 2
 
 	*/
 	private aStar(goal: [number, number], map: number[][]) {
-		const nodes = new Map<string, Node>([["0,0", { cost: 0 }]]);
+		const nodes = new Map<string, Node>([["0,0", { weight: 0 }]]);
 		const queue: [number, number][] = [[0, 0]];
 
 		while (queue.length > 0) {
-			// [...queue.entries()].forEach(([index, item]) => {
-			// 	this.helpers.dbg(
-			// 		`queue index: ${index}`,
-			// 		` queue item: `,
-			// 		` ${item.join(",")}`,
-			// 		`item  cost: `,
-			// 		` ${nodes.get(item.join(","))!.cost}`
-			// 	);
-			// });
+			[...queue.entries()].forEach(([index, item]) => {
+				this.helpers.dbg(
+					`queue index: ${index}`,
+					` queue item: `,
+					` ${item.join(",")}`,
+					`item  weight: `,
+					` ${nodes.get(item.join(","))!.weight}`
+				);
+			});
 			const [currentIndex, current] = this.findMin(queue, nodes);
 			queue.splice(currentIndex, 1);
 			if (current.join(",") === goal.join(",")) {
 				break;
 			}
-			// this.helpers.dbg(`queue after: ${current.join(",")}`);
+			this.helpers.dbg(`queue after: ${current.join(",")}`);
 
 			const currentNode = nodes.get(current.join(","));
 
@@ -87,11 +87,11 @@ class Day15 {
 					continue;
 				}
 				const adjacentNodeAddress = `${adjacentNodeY},${adjacentNodeX}`;
-				const cost =
-					currentNode.cost + map[adjacentNodeY][adjacentNodeX];
-				if (cost < (nodes.get(adjacentNodeAddress)?.cost ?? Infinity)) {
+				const weight =
+					currentNode.weight + map[adjacentNodeY][adjacentNodeX];
+				if (weight < (nodes.get(adjacentNodeAddress)?.weight ?? Infinity)) {
 					nodes.set(adjacentNodeAddress, {
-						cost: cost,
+						weight: weight,
 						previous: current
 					});
 					if (
@@ -111,7 +111,7 @@ class Day15 {
 
 	private findMin(queue: [number, number][], nodes: Map<string, Node>) {
 		return [...queue.entries()].reduce(([minIndex, min], [curIndex, cur]) =>
-			nodes.get(cur.join(","))!.cost < nodes.get(min.join(","))!.cost
+			nodes.get(cur.join(","))!.weight < nodes.get(min.join(","))!.weight
 				? [curIndex, cur]
 				: [minIndex, min]
 		);
