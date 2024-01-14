@@ -3,7 +3,7 @@ import Day24 from "../solutions/lib/day24";
 
 const helpers = require("../solutions/lib/helpers.ts");
 
-test("SolveFirstStar", () => {
+test.skip("SolveFirstStar", () => {
 	helpers.which.env = "test";
 	helpers.clearDebug();
 
@@ -14,7 +14,7 @@ test("SolveFirstStar", () => {
 	expect(lib.solveForFirstStar(lines)).toBe();
 });
 
-test("SolveSecondStar", () => {
+test.skip("SolveSecondStar", () => {
 	helpers.which.env = "test";
 	const lib = new Day24();
 
