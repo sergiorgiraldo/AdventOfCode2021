@@ -3,7 +3,7 @@ import Day25 from "../solutions/lib/day25";
 
 const helpers = require("../solutions/lib/helpers.ts");
 
-test.skip("SolveFirstStar", () => {
+test("SolveFirstStar", () => {
 	helpers.which.env = "test";
 	helpers.clearDebug();
 
@@ -23,7 +23,7 @@ test.skip("SolveFirstStar", () => {
 	expect(lib.solveForFirstStar(lines)).toBe(58);
 });
 
-test.skip("SolveSecondStar", () => {
+test("SolveSecondStar", () => {
 	helpers.which.env = "test";
 	const lib = new Day25();
 
@@ -38,5 +38,5 @@ test.skip("SolveSecondStar", () => {
 	lines.push("v.v..>>v.v");
 	lines.push("....v..v.>");
 
-	expect(lib.solveForSecondStar(lines)).toBe(-2);
+	expect(lib.solveForSecondStar(lines)).toBe(0);
 });

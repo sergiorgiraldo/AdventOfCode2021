@@ -1,1 +1,2 @@
-TODO
+Solution 1,98491959997994, Execution time: 0 ms
+Solution 2,61191516111321, Execution time: 0 ms
