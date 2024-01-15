@@ -1,12 +1,13 @@
 /** The board is indexed 1 dimensionally as follows:
- * ┏━━┓  ┏━━┓  ┏━━┓  ┏━━┓  ┏━━┓  ┏━━┓  ┏━━┓
- * ┃00┃01┃02┃03┃04┃05┃06┃07┃08┃09┃10┃11┃12┃
- * ┗━━┛  ┗━━╃──╄━━╃──╄━━╃──╄━━╃──╄━━┛  ┗━━┛
+ * ┏━━┓  ┏━━┓  ┏━━┓  ┏━━┓  ┏━━┓  ┏━━┓   ┏━━┓
+ * ┃00┃01┃02┃03┃04┃05┃06┃07┃08┃09┃10┃11 ┃12┃
+ * ┗━━┛  ┗━━┛──┗━━┛──┗━━┛──┗━━┛──┗━━┛   ┗━━┛
  *          │  │  │  │  │  │  │  │
  *          ├──┤  ├──┤  ├──┤  ├──┤
  *          │  │  │  │  │  │  │  │
  *          └──┘  └──┘  └──┘  └──┘
  */
+
 
 /** Represents current position of amphipod */
 enum AmphipodPosition {
@@ -313,10 +314,7 @@ class Day23 {
 		return this.minimumEnergy(startingState, 100_000);
 	}
 
-	private minimumEnergy(
-		startingState: State,
-		openHeapLength: number
-	): number {
+	private minimumEnergy(startingState: State, openHeapLength: number): number {
 		startingState.amortize();
 
 		const openSet: Map<number, State> = new Map();

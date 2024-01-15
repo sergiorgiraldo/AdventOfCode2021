@@ -16,13 +16,13 @@ function report(...args:string[]) {
 	helpers_.which.env = "prod";
 
 	const filePath:string = path.join(__dirname, "input.txt");
-	const lines:string[] = fs_.readFileSync(filePath).toString().split("\n").slice(0, -1);
+	const lines:string = fs_.readFileSync(filePath).toString();
 
 	 solveForFirstStar_(lines);
 	 solveForSecondStar_(lines);
 }
 
- function solveForFirstStar_(lines:string[]):void{
+ function solveForFirstStar_(lines:string):void{
 	const lib = new Day24();
 
 	const start:number = Date.now();
@@ -34,7 +34,7 @@ function report(...args:string[]) {
 	report("Solution 1", result.toString(), ` Execution time: ${end - start} ms`);
 }
 
- function solveForSecondStar_(lines:string[]):void{
+ function solveForSecondStar_(lines:string):void{
 	const lib = new Day24();
 
 	const start = Date.now();
