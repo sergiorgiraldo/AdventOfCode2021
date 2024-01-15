@@ -1,5 +1,0 @@
-1/14/2024, 11:59:26 PM
-at Day22.setCubes [as solveForFirstStar] (/Users/GK47LX/source/AdventOfCode2021/solutions/lib/day22.ts:11:15)
-4
-at Day22.setCubes [as solveForSecondStar] (/Users/GK47LX/source/AdventOfCode2021/solutions/lib/day22.ts:17:15)
-60

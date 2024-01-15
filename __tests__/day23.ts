@@ -3,23 +3,23 @@ import Day23 from "../solutions/lib/day23";
 
 const helpers = require("../solutions/lib/helpers.ts");
 
-test.skip("SolveFirstStar", () => {
+test("SolveFirstStar", () => {
 	helpers.which.env = "test";
 	helpers.clearDebug();
 
 	const lib = new Day23();
 
-	let lines: string[] = [];
-	lines.push("#############");
-	lines.push("#...........#");
-	lines.push("###B#C#B#D###");
-	lines.push("  #A#D#C#A#");
-	lines.push("  #########");
+	let lines: string;
+	lines=`#############
+#...........#
+###B#C#B#D###
+  #A#D#C#A#
+  #########`;
 
-	expect(lib.solveForFirstStar(lines)).toBe(12521);
+	expect(lib.solveForFirstStar(lines)).toBe(12_521);
 });
 
-test.skip("SolveSecondStar", () => {
+test("SolveSecondStar", () => {
 	helpers.which.env = "test";
 	const lib = new Day23();
 
@@ -30,5 +30,5 @@ test.skip("SolveSecondStar", () => {
 	lines.push("  #A#D#C#A#");
 	lines.push("  #########");
 
-	expect(lib.solveForSecondStar(lines)).toBe(-2);
+	expect(lib.solveForSecondStar(lines)).toBe(44_169);
 });
