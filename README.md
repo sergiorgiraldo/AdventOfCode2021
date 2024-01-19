@@ -6,7 +6,7 @@ https://adventofcode.com/2021/
 
 ## My solutions
 
-[https://sergiorgiraldo.github.io/AdventOfCode2021/solutions/]
+https://sergiorgiraldo.github.io/AdventOfCode2021/solutions/
 
 ## Performance
 
