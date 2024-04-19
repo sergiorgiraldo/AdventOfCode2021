@@ -1,0 +1,182 @@
+Lets go with the model 98766, x 0 y 0 w 0 z 0, using ALU from the unit test
+first instruction - 9
+inp w -> x 0 y 0 w 9 z 0
+mul x 0 -> x 0 y 0 w 9 z 0
+add x z -> x 0 y 0 w 9 z 0
+mod x 26  -> x 0 y 0 w 9 z 0
+div z 1 -> x 0 y 0 w 9 z 0
+add x 11 -> x 11 y 0 w 9 z 0
+eql x w -> x 0 y 0 w 9 z 0
+eql x 0 -> x 1 y 0 w 9 z 0
+mul y 0 -> x 1 y 1 w 9 z 0
+add y 25 -> x 1 y 26 w 9 z 0
+mul y x -> x 1 y 26 w 9 z 0
+add y 1 -> x 1 y 27 w 9 z 0
+mul z y -> x 1 y 27 w 9 z 0
+mul y 0 -> x 1 y 0 w 9 z 0
+add y w -> x 1 y 9 w 9 z 0
+add y 6 -> x 1 y 15 w 9 z 0
+mul y x -> x 1 y 15 w 9 z 0
+add z y -> x 1 y 15 w 9 z 15 <- 0*26 + 9 + 6
+
+second instruction - 8
+inp w ->  x 1 y 15 w 8 z 15
+mul x 0 -> x 0 y 15 w 8 z 15
+add x z -> x 15 y 15 w 8 z 15
+mod x 26 -> x 15 y 15 w 8 z 15
+div z 1 -> x 15 y 15 w 8 z 15
+add x 13 -> x 28 y 15 w 8 z 15
+eql x w -> x 0 y 15 w 8 z 15
+eql x 0 -> x 1 y 15 w 8 z 15
+mul y 0 -> x 1 y 0 w 8 z 15
+add y 25 -> x 1 y 25 w 8 z 15
+mul y x -> x 1 y 25 w 8 z 15
+add y 1 -> x 1 y 26 w 8 z 15
+mul z y -> x 1 y 26 w 8 z 390
+mul y 0 -> x 1 y 0 w 8 z 390
+add y w -> x 1 y 8 w 8 z 390
+add y 14 -> x 1 y 22 w 8 z 390
+mul y x -> x 1 y 22 w 8 z 390
+add z y -> x 1 y 22 w 8 z 412 <- 15*26 + 14 + 8
+
+third instruction - 7
+inp w -> x 1 y 22 w 7 z 412
+mul x 0 -> x 0 y 22 w 7 z 412
+add x z -> x 412 y 22 w 7 z 412
+mod x 26 -> x 22 y 22 w 7 z 412
+div z 1 -> x 22 y 22 w 7 z 412
+add x 15 -> x 37 y 22 w 7 z 412
+eql x w -> x 0 y 22 w 7 z 412
+eql x 0 -> x 1 y 22 w 7 z 412
+mul y 0 -> x 1 y 0 w 7 z 412
+add y 25 -> x 1 y 25 w 7 z 412
+mul y x -> x 1 y 25 w 7 z 412
+add y 1 -> x 1 y 26 w 7 z 412
+mul z y -> x 1 y 26 w 7 z 10712
+mul y 0 -> x 1 y 0 w 7 z 10712
+add y w -> x 1 y 7 w 7 z 10712
+add y 14 -> x 1 y 21 w 7 z 10712
+mul y x -> x 1 y 21 w 7 z 10712
+add z y -> x 1 y 21 w 7 z 10733 <- 412*26 + 7 + 14
+
+fourth instruction - 6
+inp w -> x 1 y 21 w 6 z 10733
+mul x 0 -> x 0 y 21 w 6 z 10733
+add x z -> x 10733 y 21 w 6 z 10733
+mod x 26 -> x 21 y 21 w 6 z 10733
+div z 26 -> x 21 y 21 w 6 z 412
+add x -8 -> x 13 y 21 w 6 z 412 
+eql x w -> x 0 y 21 w 6 z 412  
+eql x 0 -> x 1 y 21 w 6 z 412  
+mul y 0 -> x 1 y 0 w 6 z 412   
+add y 25 -> x 1 y 25 w 6 z 412
+mul y x -> x 1 y 25 w 6 z 412
+add y 1 -> x 1 y 26 w 6 z 412
+mul z y -> x 1 y 26 w 6 z 10712
+mul y 0 -> x 1 y 0 w 6 z 10712
+add y w -> x 1 y 6 w 6 z 10712
+add y 10 -> x 1 y 16 w 6 z 10712
+mul y x -> x 1 y 16 w 6 z 10712
+add z y -> x 1 y 16 w 6 z 10728
+
+fifth instruction - 6
+inp w -> x 1 y 16 w 6 z 10728
+mul x 0 -> x 0 y 16 w 6 z 10728
+add x z -> x 10728 y 16 w 6 z 10728 
+mod x 26 -> x 16 y 16 w 6 z 10728  
+div z 1 ->  x 16 y 16 w 6 z 10728
+add x 13 -> x 29 y 16 w 6 z 10728
+eql x w -> x 0 y 16 w 6 z 10728
+eql x 0 -> x 1 y 16 w 6 z 10728 
+mul y 0 -> x 1 y 0 w 6 z 10728
+add y 25 ->  x 1 y 25 w 6 z 10728
+mul y x -> x 1 y 25 w 6 z 10728
+add y 1 -> x 1 y 26 w 6 z 10728
+mul z y -> x 1 y 26 w 6 z 278928
+mul y 0 ->  x 1 y 0 w 6 z 278928
+add y w ->  x 1 y 6 w 6 z 278928
+add y 9 -> x 1 y 15 w 6 z 278928
+mul y x ->  x 1 y 15 w 6 z 278928
+add z y ->  x 1 y 15 w 6 z 278943
+
+Lets go with the model 9876, x 0 y 0 w 0 z 0, using ALU from the puzzle
+
+first instruction - 9
+inp w ->  x 0 y 0 w 9 z 0
+mul x 0 -> x 0 y 0 w 9 z 0
+add x z -> x 0 y 0 w 9 z 0
+mod x 26 -> x 0 y 0 w 9 z 0
+div z 1 -> x 0 y 0 w 9 z 0
+add x 10 -> x 10 y 0 w 9 z 0
+eql x w -> x 0 y 0 w 9 z 0
+eql x 0 -> x 1 y 0 w 9 z 0
+mul y 0 -> x 1 y 0 w 9 z 0
+add y 25 -> x 1 y 25 w 9 z 0
+mul y x -> x 1 y 25 w 9 z 0
+add y 1 -> x 1 y 26 w 9 z 0
+mul z y -> x 1 y 26 w 9 z 0
+mul y 0 -> x 1 y 0 w 9 z 0
+add y w -> x 1 y 9 w 9 z 0
+add y 2 -> x 1 y 11 w 9 z 0
+mul y x -> x 1 y 11 w 9 z 0
+add z y -> x 1 y 11 w 9 z 11
+
+second instruction - 8
+inp w -> x 1 y 11 w 8 z 11
+mul x 0 -> x 0 y 11 w 8 z 11
+add x z -> x 11 y 11 w 8 z 11
+mod x 26 -> x 11 y 11 w 8 z 11
+div z 1 -> x 11 y 11 w 8 z 11
+add x 15 -> x 26 y 11 w 8 z 11
+eql x w -> x 0 y 11 w 8 z 11
+eql x 0 -> x 1 y 11 w 8 z 11
+mul y 0 -> x 1 y 0 w 8 z 11
+add y 25 -> x 1 y 25 w 8 z 11
+mul y x -> x 1 y 25 w 8 z 11
+add y 1 -> x 1 y 26 w 8 z 11
+mul z y -> x 1 y 26 w 8 z 286
+mul y 0 -> x 1 y 0 w 8 z 286
+add y w -> x 1 y 8 w 8 z 286
+add y 16 -> x 1 y 24 w 8 z 286
+mul y x -> x 1 y 24 w 8 z 286
+add z y -> x 1 y 24 w 8 z 310
+
+third instruction - 7
+inp w -> x 1 y 24 w 7 z 310
+mul x 0 -> x 0 y 24 w 7 z 310
+add x z -> x 310 y 24 w 7 z 310
+mod x 26 -> x 24 y 24 w 7 z 310
+div z 1 -> x 24 y 24 w 7 z 310
+add x 14 -> x 38 y 24 w 7 z 310
+eql x w -> x 0 y 24 w 7 z 310
+eql x 0 -> x 1 y 24 w 7 z 310
+mul y 0 -> x 1 y 0 w 7 z 310
+add y 25 -> x 1 y 25 w 7 z 310
+mul y x -> x 1 y 25 w 7 z 310
+add y 1 -> x 1 y 26 w 7 z 310
+mul z y -> x 1 y 26 w 7 z 8060
+mul y 0 -> x 1 y 0 w 7 z 8060
+add y w -> x 1 y 7 w 7 z 8060
+add y 9 -> x 1 y 16 w 7 z 8060
+mul y x -> x 1 y 16 w 7 z 8060
+add z y -> x 1 y 16 w 7 z 8060
+
+fourth instruction - 6
+inp w -> x 1 y 16 w 6 z 8060
+mul x 0 -> x 0 y 16 w 6 z 8060
+add x z -> x 8060 y 16 w 6 z 8060
+mod x 26 -> x 0 y 16 w 6 z 8060
+div z 1 -> x 0 y 16 w 6 z 8060
+add x 15 -> x 15 y 16 w 6 z 8060
+eql x w -> x 0 y 16 w 6 z 8060
+eql x 0 -> x 1 y 16 w 6 z 8060
+mul y 0 -> x 1 y 0 w 6 z 8060
+add y 25 -> x 1 y 25 w 6 z 8060
+mul y x -> x 1 y 25 w 6 z 8060
+add y 1 -> x 1 y 26 w 6 z 8060
+mul z y -> x 1 y 26 w 6 z 2090560
+mul y 0 -> x 1 y 0 w 6 z 2090560
+add y w -> x 1 y 6 w 6 z 2090560
+add y 0 -> x 1 y 6 w 6 z 2090560
+mul y x -> x 1 y 6 w 6 z 2090560
+add z y -> x 1 y 6 w 6 z 2090566

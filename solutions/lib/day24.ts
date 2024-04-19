@@ -42,15 +42,26 @@ class Day24 {
 	}
 
 	/** Returns rules for a valid model number ordered by most significant digit */
+	/*
+	if i check the commands in the ALU, on each of the 14 instructions, i see that only the commands 2,3 and 9 are relevant
+	all other commands are always the same, first always `mul x 0`, second always `add x z`, etc
+	*/
 	private parseRules(lines: string): Rule[] {
 		const rules: Rule[] = [];
 		
 		const stack: [number, number][] = [];
 
+		const firstLine = lines.split("\ninp w")[0];
+		const matches = [...firstLine.matchAll(/-?\d+/g)];
+		this.helpers.dbg(firstLine);
+		matches.forEach((d) => this.helpers.dbg(d));
+
 		lines
 			.split("\ninp w")
 			.map((block) => [...block.matchAll(/-?\d+/g)].map((d) => +d))
 			.forEach(({ [2]: a, [3]: b, [9]: c }, j) => {
+				this.helpers.dbg(a,"::",b,"::",c,"::",j);
+
 				if (a === 1) {
 					stack.push([c, j]);
 				} 
