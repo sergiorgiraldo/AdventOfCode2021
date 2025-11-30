@@ -1,5 +1,13 @@
 # Changelog
 
+## [11.1.0](https://github.com/sergiorgiraldo/AdventOfCode2021/compare/v11.0.0...v11.1.0) (2025-11-30)
+
+
+### Features
+
+* navigation in the viewer ([ab70e0a](https://github.com/sergiorgiraldo/AdventOfCode2021/commit/ab70e0a87a093ec94e2d240dad65a2a9ed0bfe2a))
+* retrieve easter-eggs ([3319d1c](https://github.com/sergiorgiraldo/AdventOfCode2021/commit/3319d1c57d610f0593c8358d183018c9d160407a))
+
 ## [11.0.0](https://github.com/sergiorgiraldo/AdventOfCode2021/compare/v10.0.0...v11.0.0) (2024-01-15)
 
 
